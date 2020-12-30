@@ -1,0 +1,10 @@
+language: ruby
+script: bundle exec rspec
+rvm:
+- 2.7.0
+deploy:
+  provider: heroku
+  api_key:
+    secure: xxx
+before_install:
+- gem install bundler
