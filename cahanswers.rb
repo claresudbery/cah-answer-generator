@@ -15,24 +15,24 @@ class MyApp < Sinatra::Base
         end
     end
 
-    def read_names
-        return [] unless File.exist?("names.txt")
-        File.read("names.txt").split("\n")
+    def read_answers
+        return [] unless File.exist?("safe_answers.txt")
+        File.read("all_answers.txt").split("\n")
     end
 
     class NameValidator    
-        def initialize(name, names)
-        @name = name.to_s
-        @names = names
+        def initialize(name, answers)
+            @name = name.to_s
+            @answers = answers
         end
 
         def valid?
-        validate
-        @message.nil?
+            validate
+            @message.nil?
         end
 
         def message
-        @message
+            @message
         end
 
         private
@@ -40,7 +40,7 @@ class MyApp < Sinatra::Base
         def validate
             if @name.empty?
             @message = "You need to enter a name."
-            elsif @names.include?(@name)
+            elsif @answers.include?(@name)
             @message = "#{@name} is already included in our list."
             end
         end
@@ -55,18 +55,18 @@ class MyApp < Sinatra::Base
     get "/cahanswers" do
         @message = session.delete(:message)
         @name = params["name"]
-        @names = read_names
+        @answers = read_answers
         erb :cahanswers
     end
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter a name
     post "/cahanswers" do
         @name = params["name"]
-        @names = read_names
-        validator = NameValidator.new(@name, @names)
+        @answers = read_answers
+        validator = NameValidator.new(@name, @answers)
 
         if validator.valid?
-            store_name("names.txt", @name)
+            store_name("all_answers.txt", @name)
             session[:message] = "Successfully stored the name #{@name}."
             redirect "/cahanswers?name=#{@name}"
         else
