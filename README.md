@@ -1,6 +1,6 @@
 # cah-answer-generator
 
-This app is now deployed [here](https://cah-answer-generator.herokuapp.com/). For info on how to deploy using Travis and Heroku, see [here](https://github.com/claresudbery/tic-tac-toe-kata/blob/master/README.md#deploying-to-heroku-via-travis).
+This app is now deployed [here](https://cah-answer-generator.herokuapp.com/) (for info on how to deploy using Travis and Heroku, see [here](https://github.com/claresudbery/tic-tac-toe-kata/blob/master/README.md#deploying-to-heroku-via-travis)).
 
 This was created under a [Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc/3.0/) so that you can play [this lip-reading game](https://clare-wiki.herokuapp.com/pages/think/life/Fun-Games#the-lip-reading-game).
 
