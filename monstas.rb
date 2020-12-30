@@ -56,7 +56,7 @@ class MyApp < Sinatra::Base
         @message = session.delete(:message)
         @name = params["name"]
         @names = read_names
-        erb :monstas
+        erb :cahanswers
     end
 
     # Visit http://127.0.0.1:4567/monstas in the browser and enter a name
@@ -71,7 +71,7 @@ class MyApp < Sinatra::Base
             redirect "/monstas?name=#{@name}"
         else
             @message = validator.message
-            erb :monstas
+            erb :cahanswers
         end
     end
 

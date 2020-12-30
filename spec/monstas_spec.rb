@@ -2,7 +2,7 @@ ENV['APP_ENV'] = 'test'
 
 require "spec_helper"
 
-require_relative '../monstas'
+require_relative '../cahanswers'
 require 'rspec'
 require 'rack/test'
 
