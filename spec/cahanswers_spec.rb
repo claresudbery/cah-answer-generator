@@ -19,18 +19,18 @@ RSpec.describe 'The HelloWorld App' do
       expect(last_response.body).to eq('Hello World')
     end
   
-    it "gets basic monstas route successfully" do
-      get '/monstas'
+    it "gets basic cahanswers route successfully" do
+      get '/cahanswers'
       expect(last_response).to be_ok
     end
   
     it "shows a submit button" do
-      get '/monstas'
+      get '/cahanswers'
       expect(last_response.body).to include('submit')
     end
   
     it "has a list item" do
-      get '/monstas'
+      get '/cahanswers'
       expect(last_response.body).to have_tag(:li)
     end
 end

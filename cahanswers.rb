@@ -4,7 +4,7 @@ require "erb"
 # This page created as part of this tutorial: http://webapps-for-beginners.rubymonstas.org/sinatra/params.html
 
 # To start the app / spin up the server, run the following on the command line: rackup -p 4567
-# Alternatively you can still just use: ruby monstas.rb
+# Alternatively you can still just use: ruby cahanswers.rb
 
 class MyApp < Sinatra::Base
     enable :sessions
@@ -51,16 +51,16 @@ class MyApp < Sinatra::Base
         "Hello World #{params[:name]}".strip
     end
 
-    # Visit http://127.0.0.1:4567/monstas in the browser 
-    get "/monstas" do
+    # Visit http://127.0.0.1:4567/cahanswers in the browser 
+    get "/cahanswers" do
         @message = session.delete(:message)
         @name = params["name"]
         @names = read_names
         erb :cahanswers
     end
 
-    # Visit http://127.0.0.1:4567/monstas in the browser and enter a name
-    post "/monstas" do
+    # Visit http://127.0.0.1:4567/cahanswers in the browser and enter a name
+    post "/cahanswers" do
         @name = params["name"]
         @names = read_names
         validator = NameValidator.new(@name, @names)
@@ -68,7 +68,7 @@ class MyApp < Sinatra::Base
         if validator.valid?
             store_name("names.txt", @name)
             session[:message] = "Successfully stored the name #{@name}."
-            redirect "/monstas?name=#{@name}"
+            redirect "/cahanswers?name=#{@name}"
         else
             @message = validator.message
             erb :cahanswers
