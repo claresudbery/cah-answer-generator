@@ -1,5 +1,7 @@
 # cah-answer-generator
 
+This app is now deployed [here](https://cah-answer-generator.herokuapp.com/). For info on how to deploy using Travis and Heroku, see [here](https://github.com/claresudbery/tic-tac-toe-kata/blob/master/README.md#deploying-to-heroku-via-travis).
+
 This was created under a [Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc/3.0/) so that you can play [this lip-reading game](https://clare-wiki.herokuapp.com/pages/think/life/Fun-Games#the-lip-reading-game).
 
 All it does is randomly (ish) generate answers from the Cards Against Humanity game.
@@ -22,3 +24,5 @@ The answers are split into three categories:
 The initial Sinatra skeleton was created using [this tutorial](http://webapps-for-beginners.rubymonstas.org/sinatra/hello_world.html).
 
 To get the website up, run `bundle install` and then `rackup -p 4567` on the command line in the root folder for this project. Then visit http://127.0.0.1:4567/monstas in the browser.
+
+
