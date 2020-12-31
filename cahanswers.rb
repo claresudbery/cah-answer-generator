@@ -12,20 +12,15 @@ class MyApp < Sinatra::Base
     DEFAULT_ANSWER = "There is no answer without a question!"
     SAFE_ANSWER = "Give me a safe answer"
 
-    def store_answer(filename, string)
-        File.open(filename, "a+") do |file|
-            file.puts(string)
-        end
-    end
-
     def read_answers
         return [] unless File.exist?("safe_answers.txt")
         File.read("safe_answers.txt").split("\n")
     end
 
-    def choose_answer(answers)
-        #answers[Kernel.rand(answers.length)]
-        answers[0]
+    def choose_answer
+        answers = read_answers
+        answers[Kernel.rand(answers.length)]
+        #answers[0]
     end
 
     # Visit http://127.0.0.1:4567 in the browser
@@ -41,8 +36,7 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
     post "/cahanswers" do
-        @answers = read_answers
-        @answer = choose_answer(@answers)
+        @answer = choose_answer
         erb :cahanswers
     end
 
