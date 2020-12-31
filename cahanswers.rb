@@ -34,9 +34,20 @@ class MyApp < Sinatra::Base
         default_get
     end
 
-    # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
+    # Visit http://127.0.0.1:4567/cahanswers in the browser and click the safe button
     post "/safe" do
         @answer = AnswerGenerator.new(Randomiser.new).choose_safe_answer
+        erb :cahanswers
+    end
+
+    # Visit http://127.0.0.1:4567/kind-of-safe in the browser 
+    get "/kind-of-safe" do
+        default_get
+    end
+
+    # Visit http://127.0.0.1:4567/cahanswers in the browser and click the kind-of-safe button
+    post "/kind-of-safe" do
+        @answer = AnswerGenerator.new(Randomiser.new).choose_kind_of_safe_answer
         erb :cahanswers
     end
 

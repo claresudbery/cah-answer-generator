@@ -37,4 +37,11 @@ RSpec.describe 'The HelloWorld App' do
       random_safe_answer = @answerGenerator.choose_safe_answer
       expect(random_safe_answer).to eq(ConstStrings::FIRST_SAFE_ANSWER)
   end
+  
+  it "chooses a random kind-of-safe answer" do
+      first_answer = 0
+      allow(@randomiser_stub).to receive(:random_int).and_return(first_answer)
+      random_kind_of_safe_answer = @answerGenerator.choose_kind_of_safe_answer
+      expect(random_kind_of_safe_answer).to eq(ConstStrings::FIRST_KIND_OF_SAFE_ANSWER)
+  end
 end
