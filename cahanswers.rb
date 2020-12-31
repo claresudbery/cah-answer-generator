@@ -28,24 +28,6 @@ class MyApp < Sinatra::Base
         answers[0]
     end
 
-    class AnswerValidator    
-        def initialize(answer, answers)
-            @answer = answer.to_s
-            @answers = answers
-        end
-
-        def valid?
-            @message = "some text."
-            @message.nil?
-        end
-
-        def message
-            @message
-        end
-
-        private
-    end
-
     # Visit http://127.0.0.1:4567 in the browser
     get '/' do
         "Hello World #{params[:answer]}".strip
@@ -61,10 +43,6 @@ class MyApp < Sinatra::Base
     post "/cahanswers" do
         @answers = read_answers
         @answer = choose_answer(@answers)
-        validator = AnswerValidator.new(@answer, @answers)
-        puts "posted again"
-
-        puts "Validator not valid."
         erb :cahanswers
     end
 
