@@ -64,14 +64,8 @@ class MyApp < Sinatra::Base
         validator = AnswerValidator.new(@answer, @answers)
         puts "posted again"
 
-        if validator.valid?
-            store_answer("safe_answers.txt", @answer)
-            puts "about to redirect"
-            redirect "/cahanswers?answer=#{@answer}"
-        else
-            puts "Validator not valid."
-            erb :cahanswers
-        end
+        puts "Validator not valid."
+        erb :cahanswers
     end
 
     run! if app_file == $0
