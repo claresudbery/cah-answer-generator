@@ -17,7 +17,7 @@ class MyApp < Sinatra::Base
 
     def read_answers
         return [] unless File.exist?("safe_answers.txt")
-        File.read("all_answers.txt").split("\n")
+        File.read("safe_answers.txt").split("\n")
     end
 
     class AnswerValidator    
@@ -66,7 +66,7 @@ class MyApp < Sinatra::Base
         validator = AnswerValidator.new(@answer, @answers)
 
         if validator.valid?
-            store_answer("all_answers.txt", @answer)
+            store_answer("safe_answers.txt", @answer)
             session[:message] = "Successfully stored the answer #{@answer}."
             redirect "/cahanswers?answer=#{@answer}"
         else
