@@ -27,6 +27,32 @@ class MyApp < Sinatra::Base
         answers[Kernel.rand(answers.length)]
     end
 
+    class AnswerValidator    
+        def initialize(answer, answers)
+            @answer = answer.to_s
+            @answers = answers
+        end
+
+        def valid?
+            validate
+            @message.nil?
+        end
+
+        def message
+            @message
+        end
+
+        private
+
+        def validate
+            if @answer.empty?
+            @message = "You need to enter an answer."
+            elsif @answers.include?(@answer)
+            @message = "#{@answer} is already included in our list."
+            end
+        end
+    end
+
     # Visit http://127.0.0.1:4567 in the browser
     get '/' do
         "Hello World #{params[:answer]}".strip
@@ -34,6 +60,7 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser 
     get "/cahanswers" do
+        @message = session.delete(:message)
         @answer = DEFAULT_ANSWER
         erb :cahanswers
     end
@@ -42,7 +69,16 @@ class MyApp < Sinatra::Base
     post "/cahanswers" do
         @answers = read_answers
         @answer = choose_answer(@answers)
-        redirect "/cahanswers?answer=#{@answer}"
+        validator = AnswerValidator.new(@answer, @answers)
+
+        if validator.valid?
+            store_answer("safe_answers.txt", @answer)
+            session[:message] = "Successfully stored the answer #{@answer}."
+            redirect "/cahanswers?answer=#{@answer}"
+        else
+            @message = validator.message
+            erb :cahanswers
+        end
     end
 
     run! if app_file == $0
