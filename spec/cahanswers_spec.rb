@@ -29,13 +29,13 @@ RSpec.describe 'The HelloWorld App' do
       expect(last_response.body).to include(MyApp::SAFE_ANSWER)
     end
   
-    it "shows default answer on GET" do
-      get '/cahanswers'
-      expect(last_response.body).to include(MyApp::DEFAULT_ANSWER)
-    end
-  
     it "shows a submit button" do
       get '/cahanswers'
       expect(last_response.body).to include('submit')
+    end
+  
+    it "shows default answer on GET" do
+      get '/cahanswers'
+      expect(last_response.body).to include(MyApp::DEFAULT_ANSWER)
     end
 end
