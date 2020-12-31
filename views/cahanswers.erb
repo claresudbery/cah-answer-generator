@@ -6,13 +6,6 @@
   <input type="submit" value="Give me an answer">
 </form>
 
-<ul>
-  <li>Dummy list item</li>
-  <% @answers.each do |answer| %>
-    <li><%= answer %></li>
-  <% end %>
-<ul>
-
 <% if @message %>
   <p><%= @message %></p>
 <% end %>
