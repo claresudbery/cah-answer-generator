@@ -47,7 +47,7 @@ class MyApp < Sinatra::Base
 
         def validate
             if @answer.empty?
-                @message = "You need to enter an answer."
+                thing = true
             elsif @answers.include?(@answer)
                 @message = "#{@answer} is already included in our list."
             end
