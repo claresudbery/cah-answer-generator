@@ -1,6 +1,7 @@
 require "sinatra/base"
 require "erb"
 require_relative "./utils/answer_generator"
+require_relative "./utils/randomiser"
 
 # This page created as part of this tutorial: http://webapps-for-beginners.rubymonstas.org/sinatra/params.html
 
@@ -26,7 +27,7 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
     post "/cahanswers" do
-        @answer = AnswerGenerator.new.choose_answer
+        @answer = AnswerGenerator.new(Randomiser.new).choose_answer
         erb :cahanswers
     end
 

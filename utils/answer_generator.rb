@@ -1,5 +1,9 @@
 class AnswerGenerator
 
+    def initialize(randomiser)
+        @randomiser = randomiser
+    end
+
     def read_safe_answers
         return [] unless File.exist?("safe_answers.txt")
         File.read("safe_answers.txt").split("\n")
@@ -17,6 +21,7 @@ class AnswerGenerator
 
     def choose_answer
         answers = read_safe_answers
+        #answers[@randomiser.random_int(answers.length)]
         #answers[Kernel.rand(answers.length)]
         answers[0]
     end
