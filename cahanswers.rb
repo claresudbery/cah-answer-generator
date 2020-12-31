@@ -9,7 +9,7 @@ require "erb"
 class MyApp < Sinatra::Base
     enable :sessions
 
-    def store_name(filename, string)
+    def store_answer(filename, string)
         File.open(filename, "a+") do |file|
             file.puts(string)
         end
@@ -20,9 +20,9 @@ class MyApp < Sinatra::Base
         File.read("all_answers.txt").split("\n")
     end
 
-    class NameValidator    
-        def initialize(name, answers)
-            @name = name.to_s
+    class AnswerValidator    
+        def initialize(answer, answers)
+            @answer = answer.to_s
             @answers = answers
         end
 
@@ -38,37 +38,37 @@ class MyApp < Sinatra::Base
         private
 
         def validate
-            if @name.empty?
-            @message = "You need to enter a name."
-            elsif @answers.include?(@name)
-            @message = "#{@name} is already included in our list."
+            if @answer.empty?
+            @message = "You need to enter an answer."
+            elsif @answers.include?(@answer)
+            @message = "#{@answer} is already included in our list."
             end
         end
     end
 
     # Visit http://127.0.0.1:4567 in the browser
     get '/' do
-        "Hello World #{params[:name]}".strip
+        "Hello World #{params[:answer]}".strip
     end
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser 
     get "/cahanswers" do
         @message = session.delete(:message)
-        @name = params["name"]
+        @answer = params["answer"]
         @answers = read_answers
         erb :cahanswers
     end
 
-    # Visit http://127.0.0.1:4567/cahanswers in the browser and enter a name
+    # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
     post "/cahanswers" do
-        @name = params["name"]
+        @answer = params["answer"]
         @answers = read_answers
-        validator = NameValidator.new(@name, @answers)
+        validator = AnswerValidator.new(@answer, @answers)
 
         if validator.valid?
-            store_name("all_answers.txt", @name)
-            session[:message] = "Successfully stored the name #{@name}."
-            redirect "/cahanswers?name=#{@name}"
+            store_answer("all_answers.txt", @answer)
+            session[:message] = "Successfully stored the answer #{@answer}."
+            redirect "/cahanswers?answer=#{@answer}"
         else
             @message = validator.message
             erb :cahanswers
