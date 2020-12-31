@@ -30,6 +30,10 @@ RSpec.describe 'The HelloWorld App' do
     def it_shows_default_answer
       expect(last_response.body).to include(MyApp::DEFAULT_ANSWER)
     end
+
+    def it_replaces_default_answer
+      expect(last_response.body).not_to include(MyApp::DEFAULT_ANSWER)
+    end
   
     context "root route" do
       it "returns 200 on get" do
@@ -38,19 +42,33 @@ RSpec.describe 'The HelloWorld App' do
       end
     end
   
-    it "returns 200 on get" do
-      get '/cahanswers'
-      it_returns_200
+    context "default route" do
+      it "returns 200 on get" do
+        get '/cahanswers'
+        it_returns_200
+      end
+    
+      it "shows default answer and all buttons" do
+        get '/cahanswers'
+        it_shows_all_buttons_and_default_answer
+      end
     end
   
-    it "shows default answer and all buttons" do
-      get '/cahanswers'
-      it_shows_all_buttons_and_default_answer
-    end
-  
-    it "changes the answer when you ask for a safe answer" do
-      get '/cahanswers'
-      post '/safe'
-      expect(last_response.body).not_to include(MyApp::DEFAULT_ANSWER)
+    context "safe route" do
+      it "returns 200 on get" do
+        get '/safe'
+        it_returns_200
+      end
+    
+      it "shows default answer and all buttons" do
+        get '/safe'
+        it_shows_all_buttons_and_default_answer
+      end
+    
+      it "changes the answer when you ask for a safe answer" do
+        get '/safe'
+        post '/safe'
+        it_replaces_default_answer
+      end
     end
 end
