@@ -12,17 +12,26 @@ class MyApp < Sinatra::Base
     enable :sessions
 
     DEFAULT_ANSWER = "There is no answer without a question!"
-    SAFE_ANSWER = "Give me a safe answer"
+    SAFE_ANSWER_BUTTON_TEXT = "Give me a safe answer"
+
+    def default_get
+        @answer = DEFAULT_ANSWER
+        erb :cahanswers
+    end
 
     # Visit http://127.0.0.1:4567 in the browser
     get '/' do
-        "Hello World #{params[:answer]}".strip
+        default_get
     end
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser 
     get "/cahanswers" do
-        @answer = DEFAULT_ANSWER
-        erb :cahanswers
+        default_get
+    end
+
+    # Visit http://127.0.0.1:4567/safe in the browser 
+    get "/safe" do
+        default_get
     end
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer

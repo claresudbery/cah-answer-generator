@@ -19,7 +19,7 @@ class AnswerGenerator
         File.read("all_answers.txt").split("\n")
     end
 
-    def choose_answer
+    def choose_safe_answer
         answers = read_safe_answers
         answers[@randomiser.random_int(answers.length)]
     end
