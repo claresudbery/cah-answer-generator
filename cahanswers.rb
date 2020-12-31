@@ -1,5 +1,6 @@
 require "sinatra/base"
 require "erb"
+require_relative "./utils/answer_generator"
 
 # This page created as part of this tutorial: http://webapps-for-beginners.rubymonstas.org/sinatra/params.html
 
@@ -11,17 +12,6 @@ class MyApp < Sinatra::Base
 
     DEFAULT_ANSWER = "There is no answer without a question!"
     SAFE_ANSWER = "Give me a safe answer"
-
-    def read_answers
-        return [] unless File.exist?("safe_answers.txt")
-        File.read("safe_answers.txt").split("\n")
-    end
-
-    def choose_answer
-        answers = read_answers
-        answers[Kernel.rand(answers.length)]
-        #answers[0]
-    end
 
     # Visit http://127.0.0.1:4567 in the browser
     get '/' do
@@ -36,7 +26,7 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
     post "/cahanswers" do
-        @answer = choose_answer
+        @answer = AnswerGenerator.new.choose_answer
         erb :cahanswers
     end
 
