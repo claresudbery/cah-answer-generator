@@ -20,6 +20,10 @@ class MyApp < Sinatra::Base
         File.read("safe_answers.txt").split("\n")
     end
 
+    def choose_answer(answers)
+        answers[Kernel.rand(answers.length)]
+    end
+
     class AnswerValidator    
         def initialize(answer, answers)
             @answer = answer.to_s
@@ -61,8 +65,8 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
     post "/cahanswers" do
-        @answer = params["answer"]
         @answers = read_answers
+        @answer = choose_answer(@answers)
         validator = AnswerValidator.new(@answer, @answers)
 
         if validator.valid?

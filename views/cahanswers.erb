@@ -1,10 +1,9 @@
 <% unless @answer.to_s.empty? %>
-  <h1>Hello <%= @answer %></h1>
+  <h1><%= @answer %></h1>
 <% end %>
 
 <form action="/cahanswers" method="post">
-  <input type="text" name="answer" value="<%= @answer %>">
-  <input type="submit">
+  <input type="submit" value="Give me an answer">
 </form>
 
 <ul>
