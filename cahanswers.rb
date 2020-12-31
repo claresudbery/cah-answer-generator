@@ -24,8 +24,8 @@ class MyApp < Sinatra::Base
     end
 
     def choose_answer(answers)
-        #answers[Kernel.rand(answers.length)]
-        answers[0]
+        answers[Kernel.rand(answers.length)]
+        #answers[0]
     end
 
     class AnswerValidator    
@@ -35,8 +35,9 @@ class MyApp < Sinatra::Base
         end
 
         def valid?
-            validate
-            @message.nil?
+            #validate
+            #@message.nil?
+            true
         end
 
         def message
@@ -47,9 +48,9 @@ class MyApp < Sinatra::Base
 
         def validate
             if @answer.empty?
-            @message = "You need to enter an answer."
+                @message = "You need to enter an answer."
             elsif @answers.include?(@answer)
-            @message = "#{@answer} is already included in our list."
+                @message = "#{@answer} is already included in our list."
             end
         end
     end
@@ -71,14 +72,11 @@ class MyApp < Sinatra::Base
         @answers = read_answers
         @answer = choose_answer(@answers)
         validator = AnswerValidator.new(@answer, @answers)
+        puts "posted again"
 
-        if validator.valid?
-            store_answer("safe_answers.txt", @answer)
-            redirect "/cahanswers?answer=#{@answer}"
-        else
-            @message = validator.message
-            erb :cahanswers
-        end
+        store_answer("safe_answers.txt", @answer)
+        puts "about to redirect"
+        redirect "/cahanswers?answer=#{@answer}"
     end
 
     run! if app_file == $0
