@@ -1,3 +1,6 @@
+<br/>
+<br/>
+
 <% unless @answer.to_s.empty? %>
   <h1><%= @answer %></h1>
 <% end %>
@@ -7,3 +10,43 @@
   <input type="submit" value="<%= MyApp::KIND_OF_SAFE_ANSWER_BUTTON_TEXT %>" formaction="/kind-of-safe">
   <input type="submit" value="<%= MyApp::DANGEROUS_ANSWER_BUTTON_TEXT %>" formaction="/danger">
 </form>
+
+<br/>
+<br/>
+
+<h2> What the hell is this? </h2>
+
+<p>
+  This app was created so that you can play <a href="https://clare-wiki.herokuapp.com/pages/think/life/Fun-Games#the-lip-reading-game">this lip-reading game</a>.
+</p>
+<p>
+  All it does is randomly (ish) generate answers from the <a href="https://cardsagainsthumanity.com/"><b>Cards Against Humanity</b> game</a>.
+</p>
+<p>
+  The answers are split into three categories:
+</p>
+
+<h3> 1. Safe for work </h3> 
+
+<ul>
+  <li>This is still Cards Against Humanity though. Somebody could get upset.</li>
+	<li>If you're really worried, you'd probably better find a different source of phrases for your game!</li>
+</ul>
+
+<h3> 2. Kind of safe for work (assuming your work environment is quite relaxed) </h3> 
+
+<ul>
+  <li>All the safe answers plus some extra ones</li>
+	<li>For example, sex is referred to but without the use of explicit language</li>
+	<li>I mean, all I can really tell you is that I felt like I could cope with these phrases being used in a game with my (very relaxed) colleagues. Your mean may vary.</li>
+</ul>
+
+<h3> 3. Danger! Not guaranteed to be safe for work </h3> 
+
+<ul>
+  <li>ALL the answers</li>
+</ul>
+
+<p>
+  This app was created under a <a href="https://creativecommons.org/licenses/by-nc/3.0/)">Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA)</a>. The source code is available <a href="https://github.com/claresudbery/cah-answer-generator">on GitHub here</a>. I can't remember where I got the original text, but it's available <a href="https://github.com/crhallberg/json-against-humanity">here</a>, and the readme there lists various other sources as well.
+</p>

@@ -2,9 +2,9 @@
 
 This app is now deployed [here](https://cah-answer-generator.herokuapp.com/) (for info on how to deploy using Travis and Heroku, see [here](https://github.com/claresudbery/tic-tac-toe-kata/blob/master/README.md#deploying-to-heroku-via-travis)).
 
-This was created under a [Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc/3.0/) so that you can play [this lip-reading game](https://clare-wiki.herokuapp.com/pages/think/life/Fun-Games#the-lip-reading-game).
+This app was created under a [Creative Commons Attribution-NonCommercial-ShareAlike license (CC BY-NC-SA)](https://creativecommons.org/licenses/by-nc/3.0/) so that you can play [this lip-reading game](https://clare-wiki.herokuapp.com/pages/think/life/Fun-Games#the-lip-reading-game).
 
-All it does is randomly (ish) generate answers from the Cards Against Humanity game.
+All it does is randomly (ish) generate answers from the [Cards Against Humanity game](https://cardsagainsthumanity.com/). The text is available [in various places](https://github.com/crhallberg/json-against-humanity).
 
 The answers are split into three categories:
 
