@@ -35,7 +35,7 @@ class MyApp < Sinatra::Base
         end
 
         def valid?
-            validate
+            @message = "some text."
             @message.nil?
         end
 
@@ -44,10 +44,6 @@ class MyApp < Sinatra::Base
         end
 
         private
-
-        def validate            
-            @message = "some text."
-        end
     end
 
     # Visit http://127.0.0.1:4567 in the browser
