@@ -46,8 +46,9 @@ class MyApp < Sinatra::Base
         private
 
         def validate
+            thing2 = true
             thing3 = true
-            if @answer.empty?
+            if not thing2
                 thing = true
             elsif thing3
                 @message = "some text."
