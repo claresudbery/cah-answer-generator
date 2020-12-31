@@ -26,7 +26,7 @@ class MyApp < Sinatra::Base
     end
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser and enter an answer
-    post "/cahanswers" do
+    post "/safe" do
         @answer = AnswerGenerator.new(Randomiser.new).choose_answer
         erb :cahanswers
     end

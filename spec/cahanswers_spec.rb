@@ -41,7 +41,7 @@ RSpec.describe 'The HelloWorld App' do
     end
   
     it "changes the answer when you ask for a safe answer" do
-      post '/cahanswers'
+      post '/safe'
       expect(last_response.body).not_to include(MyApp::DEFAULT_ANSWER)
     end
 end
