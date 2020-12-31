@@ -74,7 +74,6 @@ class MyApp < Sinatra::Base
 
         if validator.valid?
             store_answer("safe_answers.txt", @answer)
-            session[:message] = "Successfully stored the answer #{@answer}."
             redirect "/cahanswers?answer=#{@answer}"
         else
             @message = validator.message
