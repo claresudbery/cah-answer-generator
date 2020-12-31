@@ -16,7 +16,6 @@ RSpec.describe 'The HelloWorld App' do
     @LAST_DANGEROUS_ANSWER = "Lightsaber Dildos"
 
     @randomiser_stub = double('Randomiser')
-    allow(@randomiser_stub).to receive(:random_int).and_return(0)
     @answerGenerator = AnswerGenerator.new(@randomiser_stub)
   end
   
@@ -39,5 +38,9 @@ RSpec.describe 'The HelloWorld App' do
   end
   
   it "chooses a random safe answer" do
+      first_answer = 0
+      allow(@randomiser_stub).to receive(:random_int).and_return(first_answer)
+      random_safe_answer = @answerGenerator.choose_answer
+      expect(random_safe_answer).to eq(@FIRST_SAFE_ANSWER)
   end
 end

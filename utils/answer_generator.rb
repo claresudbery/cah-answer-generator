@@ -21,8 +21,6 @@ class AnswerGenerator
 
     def choose_answer
         answers = read_safe_answers
-        #answers[@randomiser.random_int(answers.length)]
-        #answers[Kernel.rand(answers.length)]
-        answers[0]
+        answers[@randomiser.random_int(answers.length)]
     end
 end
