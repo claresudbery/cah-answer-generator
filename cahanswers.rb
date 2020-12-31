@@ -49,7 +49,7 @@ class MyApp < Sinatra::Base
             if @answer.empty?
                 thing = true
             elsif @answers.include?(@answer)
-                @message = "#{@answer} is already included in our list."
+                @message = "some text."
             end
         end
     end
