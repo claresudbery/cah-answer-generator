@@ -3,6 +3,7 @@ ENV['APP_ENV'] = 'test'
 require "spec_helper"
 
 require_relative '../cahanswers'
+require_relative 'const_strings'
 require 'rspec'
 require 'rack/test'
 
@@ -40,9 +41,7 @@ RSpec.describe 'The HelloWorld App' do
     end
   
     it "changes the answer when you ask for a safe answer" do
-      new_answer = "Michelle Obama's arms."
       post '/cahanswers'
       expect(last_response.body).not_to include(MyApp::DEFAULT_ANSWER)
-      expect(last_response.body).to include(new_answer)
     end
 end
