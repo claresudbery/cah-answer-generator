@@ -17,22 +17,23 @@ RSpec.describe 'The HelloWorld App' do
 
     @randomiser_stub = double('Randomiser')
     allow(@randomiser_stub).to receive(:random_int).and_return(0)
+    @answerGenerator = AnswerGenerator.new(@randomiser_stub)
   end
   
   it "reads safe answers" do
-      answers = AnswerGenerator.new(Randomiser.new).read_safe_answers
+      answers = @answerGenerator.read_safe_answers
       expect(answers[0]).to eq(@FIRST_SAFE_ANSWER)
       expect(answers[answers.length-1]).to eq(@LAST_SAFE_ANSWER)
   end
   
   it "reads kind-of-safe answers" do
-      kind_of_safe_answers = AnswerGenerator.new(Randomiser.new).read_kind_of_safe_answers
+      kind_of_safe_answers = @answerGenerator.read_kind_of_safe_answers
       expect(kind_of_safe_answers[0]).to eq(@FIRST_KIND_OF_SAFE_ANSWER)
       expect(kind_of_safe_answers[kind_of_safe_answers.length-1]).to eq(@LAST_KIND_OF_SAFE_ANSWER)
   end
   
   it "reads dangerous answers" do
-      dangerous_answers = AnswerGenerator.new(Randomiser.new).read_dangerous_answers
+      dangerous_answers = @answerGenerator.read_dangerous_answers
       expect(dangerous_answers[0]).to eq(@FIRST_DANGEROUS_ANSWER)
       expect(dangerous_answers[dangerous_answers.length-1]).to eq(@LAST_DANGEROUS_ANSWER)
   end
