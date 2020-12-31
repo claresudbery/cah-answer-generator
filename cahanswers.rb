@@ -53,7 +53,6 @@ class MyApp < Sinatra::Base
 
     # Visit http://127.0.0.1:4567/cahanswers in the browser 
     get "/cahanswers" do
-        @message = session.delete(:message)
         @answer = DEFAULT_ANSWER
         erb :cahanswers
     end
@@ -70,8 +69,7 @@ class MyApp < Sinatra::Base
             puts "about to redirect"
             redirect "/cahanswers?answer=#{@answer}"
         else
-            puts "Validator not valid. Message: " + validator.message
-            @message = validator.message
+            puts "Validator not valid."
             erb :cahanswers
         end
     end
