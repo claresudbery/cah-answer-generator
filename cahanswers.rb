@@ -24,7 +24,8 @@ class MyApp < Sinatra::Base
     end
 
     def choose_answer(answers)
-        answers[Kernel.rand(answers.length)]
+        #answers[Kernel.rand(answers.length)]
+        answers[0]
     end
 
     class AnswerValidator    
