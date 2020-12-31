@@ -3,7 +3,7 @@
 <% end %>
 
 <form action="/cahanswers" method="post">
-  <input type="submit" value="Give me an answer">
+  <input type="submit" value="<%= MyApp::SAFE_ANSWER %>">
 </form>
 
 <% if @message %>

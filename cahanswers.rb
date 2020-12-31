@@ -9,6 +9,8 @@ require "erb"
 class MyApp < Sinatra::Base
     enable :sessions
 
+    SAFE_ANSWER = "Give me a safe answer"
+
     def store_answer(filename, string)
         File.open(filename, "a+") do |file|
             file.puts(string)

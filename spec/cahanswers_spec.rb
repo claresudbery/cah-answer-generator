@@ -24,6 +24,11 @@ RSpec.describe 'The HelloWorld App' do
       expect(last_response).to be_ok
     end
   
+    it "shows a safe answer button" do
+      get '/cahanswers'
+      expect(last_response.body).to include(MyApp::SAFE_ANSWER)
+    end
+  
     it "shows a submit button" do
       get '/cahanswers'
       expect(last_response.body).to include('submit')
