@@ -51,5 +51,16 @@ class MyApp < Sinatra::Base
         erb :cahanswers
     end
 
+    # Visit http://127.0.0.1:4567/danger in the browser 
+    get "/danger" do
+        default_get
+    end
+
+    # Visit http://127.0.0.1:4567/cahanswers in the browser and click the danger button
+    post "/danger" do
+        @answer = AnswerGenerator.new(Randomiser.new).choose_dangerous_answer
+        erb :cahanswers
+    end
+
     run! if app_file == $0
 end

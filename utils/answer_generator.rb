@@ -28,4 +28,9 @@ class AnswerGenerator
         kind_of_safe_answers = read_kind_of_safe_answers
         kind_of_safe_answers[@randomiser.random_int(kind_of_safe_answers.length)]
     end
+
+    def choose_dangerous_answer
+        dangerous_answers = read_dangerous_answers
+        dangerous_answers[@randomiser.random_int(dangerous_answers.length)]
+    end
 end
