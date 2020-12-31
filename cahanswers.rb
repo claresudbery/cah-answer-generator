@@ -13,6 +13,8 @@ class MyApp < Sinatra::Base
 
     DEFAULT_ANSWER = "There is no answer without a question!"
     SAFE_ANSWER_BUTTON_TEXT = "Give me a safe answer"
+    KIND_OF_SAFE_ANSWER_BUTTON_TEXT = "Give me a kind-of-safe answer"
+    DANGEROUS_ANSWER_BUTTON_TEXT = "Danger..."
 
     def default_get
         @answer = DEFAULT_ANSWER

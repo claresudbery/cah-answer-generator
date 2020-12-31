@@ -25,6 +25,8 @@ RSpec.describe 'The HelloWorld App' do
 
     def it_shows_all_buttons
       expect(last_response.body).to include(MyApp::SAFE_ANSWER_BUTTON_TEXT)
+      expect(last_response.body).to include(MyApp::KIND_OF_SAFE_ANSWER_BUTTON_TEXT)
+      expect(last_response.body).to include(MyApp::DANGEROUS_ANSWER_BUTTON_TEXT)
     end
 
     def it_shows_default_answer
